@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: memo
+Version: 1.0
+Summary: A shell memo tool
+Home-page: None
+Author: wilight
+Author-email: wilighthasaki@gmail.com
+License: MIT Licence
+Description: A shell memo tool
+Keywords: memo
+Platform: any

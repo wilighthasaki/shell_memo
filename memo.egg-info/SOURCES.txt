@@ -1,0 +1,12 @@
+setup.py
+memo.egg-info/PKG-INFO
+memo.egg-info/SOURCES.txt
+memo.egg-info/dependency_links.txt
+memo.egg-info/entry_points.txt
+memo.egg-info/requires.txt
+memo.egg-info/top_level.txt
+src/__init__.py
+src/list_ui.py
+src/memo.py
+src/run_memo.py
+src/show_ui.py
