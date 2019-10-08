@@ -3,6 +3,7 @@
 import argparse
 import configparser
 import os
+import sys
 from .memo import Memo
 
 
@@ -14,7 +15,7 @@ def main():
     parser.add_argument('-a', '--add', help="add new memo", action='store_true')
     args = parser.parse_args()
 
-    config_path = './memo.conf'
+    config_path = os.path.join(sys.prefix, 'memo', 'data', 'memo.conf')
     config = configparser.ConfigParser()
     config.read(config_path)
 

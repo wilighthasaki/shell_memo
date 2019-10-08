@@ -155,12 +155,12 @@ class ShowForm(npyscreen.FormMultiPage):
     """
     Show form page
     """
-    row_height = 7
-    column_number = 4
 
     def create(self):
         self.file_list = self.parentApp.file_list
         self.memo_path = self.parentApp.memo_path
+        self.row_height = self.parentApp.row_height
+        self.column_number = self.parentApp.column_number
 
         # add code to load all memos
         memo_values = []
@@ -195,19 +195,21 @@ class ShowUI(npyscreen.NPSAppManaged):
     """
     UI for memo list
     """
-    def __init__(self, memo_path):
+    def __init__(self, config):
         super(ShowUI, self).__init__()
+        self.memo_path = config.get('memo', 'memo_path', fallback=os.path.join(sys.prefix, 'memo', 'data', 'local'))
+        self.row_height = int(config.get('memo', 'row_height'))
+        self.column_number = int(config.get('memo', 'column_number'))
 
         # load memo file
-        memo_files = os.listdir(memo_path)
+        memo_files = os.listdir(self.memo_path)
         file_list = []
         for memo_file in memo_files:
-            mdate = os.path.getmtime(os.path.join(memo_path, memo_file))
+            mdate = os.path.getmtime(os.path.join(self.memo_path, memo_file))
             t = time.localtime(mdate)
             file_list.append((memo_file, "%02d-%02d-%02d %02d:%02d:%02d" % (t.tm_year, t.tm_mon, t.tm_mday, t.tm_hour, t.tm_min, t.tm_sec)))
         file_list.sort(key=lambda x: x[1], reverse=True)
 
-        self.memo_path = memo_path
         self.file_list = file_list
 
     def onStart(self):

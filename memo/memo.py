@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import os
-from .util import get_size
+import sys
 import time
 from .list_ui import ListUI
 from .show_ui import ShowUI
@@ -8,7 +8,8 @@ from .show_ui import ShowUI
 
 class Memo(object):
     def __init__(self, config):
-        self.memo_path = config.get('memo', 'memo_path')
+        self.config = config
+        self.memo_path = config.get('memo', 'memo_path', fallback=os.path.join(sys.prefix, 'memo', 'data', 'local'))
 
     def add(self):
         title = input("Please enter a title:")
@@ -18,9 +19,9 @@ class Memo(object):
         os.system("vim %s" % file_path)
 
     def list(self):
-        lui = ListUI(self.memo_path)
+        lui = ListUI(self.config)
         lui.run()
 
     def show(self):
-        sui = ShowUI(self.memo_path)
+        sui = ShowUI(self.config)
         sui.run()

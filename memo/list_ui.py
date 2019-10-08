@@ -104,7 +104,7 @@ class ListUI(npyscreen.NPSAppManaged):
     """
     def __init__(self, config):
         super(ListUI, self).__init__()
-        self.memo_path = config.get('memo', 'memo_path')
+        self.memo_path = config.get('memo', 'memo_path', fallback=os.path.join(sys.prefix, 'memo', 'data', 'local'))
         memo_files = os.listdir(self.memo_path)
         file_list = []
         for memo_file in memo_files:
