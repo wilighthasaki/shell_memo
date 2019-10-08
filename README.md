@@ -1,14 +1,16 @@
 # A shell memo app.
 
-# Usage:
-cd src && python run_memo.py 
+# Installation
+python setup.py install
 
-I still can't figure out how to use python setup.
+# Usage:
+memo OR memo -s: show all the memos with preview
+memo -a: add a new memo
+memo -l: list all memos
+
 # Requirement:
 python3
-
 npyscreen
-
 curses
 
 
